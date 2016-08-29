@@ -1,6 +1,7 @@
 /node_modules
 /public/storage
 /vendor
+/clover.xml
 /.idea
 Homestead.json
 Homestead.yaml
