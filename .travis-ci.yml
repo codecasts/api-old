@@ -1,0 +1,23 @@
+### CODECASTS Travis CI Setup.
+
+# generic since are docker only builds
+language: generic
+
+# requies sudo for Docker executions
+sudo: required
+
+# docker must be present
+services:
+  - docker
+
+before_install:
+  # login into the docker registry
+  #- docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD"
+
+#install:
+  # build the docker image with the current source code
+  - echo 1
+
+#script:
+  # run the unit tests against the recently built image
+  - echo 2

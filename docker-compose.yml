@@ -4,10 +4,10 @@ version: '2'
 # Named volumes
 volumes:
   # MySQL Data
-  laravel-mysql-data:
+  codecasts-mysql-data:
     driver: local
   # Redis Data
-  laravel-redis-data:
+  codecasts-redis-data:
     driver: local
 
 services:
