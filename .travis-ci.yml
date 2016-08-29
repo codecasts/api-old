@@ -12,12 +12,12 @@ services:
 
 before_install:
   # login into the docker registry
-  #- docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASSWORD"
-
-#install:
-  # build the docker image with the current source code
   - echo 1
 
-#script:
-  # run the unit tests against the recently built image
+install:
+  # build the docker image with the current source code
   - echo 2
+
+script:
+  # run the unit tests against the recently built image
+  - echo 3
