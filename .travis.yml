@@ -1,23 +1,15 @@
-### CODECASTS Travis CI Setup.
-
-# generic since are docker only builds
 language: generic
-
-# requies sudo for Docker executions
 sudo: required
-
-# docker must be present
 services:
   - docker
-
 before_install:
-  # login into the docker registry
-  - echo 1
-
+  - docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD"
 install:
-  # build the docker image with the current source code
-  - echo 2
-
+  - docker build -t $DOCKER_REPO:$TRAVIS_BRANCH .
 script:
-  # run the unit tests against the recently built image
-  - echo 3
+  - docker run -t $DOCKER_REPO:$TRAVIS_BRANCH bash .test.sh
+after_success:
+  - docker push $DOCKER_REPO:$TRAVIS_BRANCH
+notifications:
+  slack:
+    secure: savwOCmHi90gUdGU5RvTFX/K6jla/e4vsUrmQAJ9Wpbxj2uUnhGxDu0u2V03JZiwkSH312QObecEv7eJj2PPlphYhRcUfjilf3wRM0NPT9eW3XHKM43UNkKDETFQeoZ6JOChj7Yqzz/UgeJzcxH8SDZcqqIXAfbQe1QLDN/amp3pAEu+oit9KjaB7wx2dJhMGtmLywPabSKgbHLjojbMU2JdfmiUMxxzWFDY0YoKsVMPCIfTs6GG+StULOIKqnAdOdF9ZL4ssML44LD3FgQJtpRuI4TjtC4WZnstihWG42IXim+sxXEDzaw4p1Oj55eYCqF4n2BxAv7oRdTS5kBJvmsUpVTAKmgukG073TMc/coF4W/HZdENVzr7lFwP/syRYVVOatyVHsqmVST/QQ4qWbbxs6ao7jC3MIqZXJRJ0xW5gA2BZF29NLOLUKw1KO7eilAQ4gTxsF6dp1R4FT6AyXAgAGLpdiothFw23yWHPhdu5SO9fr+VRjtaGCH/HQyHy3egHShArb13oYJTfuLwMUNcQC+PTCabQ3ganvxeMh7Zk5icmjuF2wDfFmuiWcSfVkaAkwy5oULsPZIMv3pkQkkcoj7ruKLyLMw6QUxqL0sP1IRo4rbGJVBcUgWE1LNOWmRX0W/5Ax1NplSzD0g2j/ZRpb0uY6pcrlYcaQ0D4ME=
