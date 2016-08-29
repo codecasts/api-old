@@ -8,3 +8,6 @@ php artisan key:generate
 
 # Run PHPUnit Tests
 php vendor/bin/phpunit --colors=never --coverage-text
+
+# Send Coverage Reports
+bash <(curl -s https://codecov.io/bash)
