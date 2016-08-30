@@ -2,11 +2,12 @@
 
 namespace Codecasts\Domains\Users\Contracts;
 
+use Artesaos\Warehouse\Contracts\BaseRepository;
 use Artesaos\Warehouse\Contracts\Segregated\CrudRepository;
 
-/**
- * Interface UserRepository.
- */
-interface UserRepository extends CrudRepository
+interface UserRepository extends CrudRepository, BaseRepository
 {
+    public function getAdmins();
+
+    public function getCount();
 }

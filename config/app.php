@@ -167,6 +167,7 @@ return [
          * Package Service Providers...
          */
         Migrator\MigrationServiceProvider::class,
+        AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider::class,
 
         /**
          * Support Service Providers...
@@ -185,14 +186,14 @@ return [
         /**
          * Domains
          */
-        Codecasts\Domains\Users\Providers\DomainServiceProvider::class,
+        //Codecasts\Domains\Users\Providers\DomainServiceProvider::class,
 
         /**
          * Units
          */
-        Codecasts\Units\Core\Providers\UnitServiceProvider::class,
-        Codecasts\Units\Auth\Providers\UnitServiceProvider::class,
-        Codecasts\Units\Home\Providers\UnitServiceProvider::class,
+        //Codecasts\Units\Core\Providers\UnitServiceProvider::class,
+        //Codecasts\Units\Auth\Providers\UnitServiceProvider::class,
+        //Codecasts\Units\Home\Providers\UnitServiceProvider::class,
 
     ],
 
@@ -240,6 +241,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'SocialAuth' => AdamWathan\EloquentOAuth\Facades\OAuth::class,
 
     ],
 

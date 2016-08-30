@@ -2,13 +2,10 @@
 
 namespace Codecasts\Domains\Users\Transformers;
 
+use League\Fractal\TransformerAbstract;
 use Codecasts\Domains\Users\User;
-use League\Fractal\TransformerAbstract as Transformer;
 
-/**
- * Class UserTransformer.
- */
-class UserTransformer extends Transformer
+class UsersTransformer extends TransformerAbstract
 {
     public function transform(User $user)
     {

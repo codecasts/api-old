@@ -5,7 +5,6 @@ namespace Codecasts\Domains\Users\Providers;
 use Codecasts\Support\Domain\ServiceProvider;
 use Codecasts\Domains\Users\Database\Factories\UserFactory;
 use Codecasts\Domains\Users\Database\Migrations\CreateUsersTable;
-use Codecasts\Domains\Users\Database\Migrations\CreatePasswordResetsTable;
 use Codecasts\Domains\Users\Database\Seeders\UsersSeeder;
 use Codecasts\Domains\Users\Contracts;
 use Codecasts\Domains\Users\Repositories;
@@ -29,7 +28,8 @@ class DomainServiceProvider extends ServiceProvider
 
     protected $migrations = [
         CreateUsersTable::class,
-        CreatePasswordResetsTable::class,
+        CreateOauthIdentitiesTable::class,
+        AlterGuestsOnUsersTable::class,
     ];
 
     protected $seeders = [
@@ -40,3 +40,4 @@ class DomainServiceProvider extends ServiceProvider
         UserFactory::class,
     ];
 }
+

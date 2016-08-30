@@ -2,20 +2,31 @@
 
 namespace Codecasts\Domains\Users\Repositories;
 
-use Codecasts\Domains\Users\Transformers\UserTransformer;
-use Codecasts\Domains\Users\User;
 use Artesaos\Warehouse\AbstractCrudRepository;
-use Codecasts\Domains\Users\Contracts\UserRepository as UserRepositoryContract;
 use Artesaos\Warehouse\Traits\ImplementsFractal;
+use Codecasts\Domains\Users\Presenters\UserPresenter;
+use Codecasts\Domains\Users\User;
 
-/**
- * Class UserRepository.
- */
+use Codecasts\Domains\Users\Contracts\UserRepository as UserRepositoryContract;
+
 class UserRepository extends AbstractCrudRepository implements UserRepositoryContract
 {
     use ImplementsFractal;
 
     protected $modelClass = User::class;
 
-    protected $transformerClass = UserTransformer::class;
+    protected $presenterClass = UserPresenter::class;
+
+    public function getAdmins()
+    {
+        $query = $this->newQuery();
+        $query->where('admin', true);
+
+        return $this->doQuery($query, false, false);
+    }
+
+    public function getCount()
+    {
+        return $this->doQuery(null, false, false)->count();
+    }
 }
