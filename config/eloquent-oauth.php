@@ -7,19 +7,19 @@ return [
         'github' => [
             'client_id' => trim(env('GITHUB_CLIENT_ID')),
             'client_secret' => trim(env('GITHUB_CLIENT_SECRET')),
-            'redirect_uri' => '',
+            'redirect_uri' => env('GITHUB_CALLBACK_URL'),
             'scope' => ['user:email'],
         ],
         'facebook' => [
             'client_id' => env('FACEBOOK_CLIENT_ID'),
             'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
-            'redirect_uri' => (env('APP_SECURE', false) ? 'https://': 'http://').env('APP_DOMAIN').'/auth/callback/facebook',
+            'redirect_uri' => env('FACEBOOK_CALLBACK_URL'),
             'scope' => ['email'],
         ],
         'google' => [
             'client_id' => env('GOOGLE_CLIENT_ID'),
             'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-            'redirect_uri' => (env('APP_SECURE', false) ? 'https://': 'http://').env('APP_DOMAIN').'/auth/callback/google',
+            'redirect_uri' => env('GOOGLE_CALLBACK_URL'),
             'scope' => [],
         ],
     ],
