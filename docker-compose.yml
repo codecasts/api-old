@@ -74,3 +74,14 @@ services:
     ports:
      - "9200:9200"
      - "9300:9300"
+
+  # SPA mockup, just for testing the auth flow
+  mockup-spa:
+    image: ambientum/php:7.0-caddy
+    container_name: codecasts-mockup-spa
+    ports:
+      - "9090:8080"
+    volumes:
+      - ./mockup-spa:/var/www/app/public
+    links:
+      - api
