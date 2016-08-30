@@ -2,16 +2,17 @@
 
 namespace Codecasts\Units\User\Http\Controllers;
 
-use Artesaos\Warehouse\Traits\ImplementsFractal;
 use Codecasts\Domains\Users\Contracts\UserRepository;
-use Codecasts\Support\Http\Controller;
+use Codecasts\Domains\Users\Transformers\UsersTransformer;
+use Codecasts\Units\Core\Http\Controller;
+
 
 /**
  * Class HomeController.
  */
 class UserController extends Controller
 {
-    use ImplementsFractal;
+    protected $transformerClass = UsersTransformer::class;
 
     /**
      * Show the application dashboard.
@@ -20,8 +21,11 @@ class UserController extends Controller
      */
     public function user(UserRepository $repository)
     {
-        $user = $repository->findByID(1);
+        //return $this->response()->noContent();
+        $users = $repository->getAll();
 
-        return $repository->makeResponseCollection(collect([$user]));
+        return $this->response()->collection($users);
+
+        //return $this->makeResponseCollection($users);
     }
 }
