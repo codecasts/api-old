@@ -84,7 +84,7 @@ The service names can be located inside the **`docker-compose.yml`** file, right
 |---------------|---------------------------------------------------------------|
 | **`cache`**   | Runs a Redis 3.2 Instance for Cache and queues                |
 | **`mysql`**   | Runs a MySQL 5.7 Instance for Database                        |
-| **`app`**     | PHP and Caddy Instance that runs the application              |
+| **`api`**     | PHP and Caddy Instance that runs the application              |
 | **`queue`**   | A PHP-CLI container, running php artisan queue:listen command |
 | **`elastic`** | Elasticsearch instance for search indexing                    |
 
@@ -102,17 +102,17 @@ such GitHub
 **PSR-1** & **PSR-2** should be enforced, a copy of php-cd-fixer is distributed along with the PHP Docker image, so the following command can automatically format the code before commiting:
 
 ```php
-docker-compose run app php-cs-fixer --diff --fixers=-psr1,-psr2 fix app
+docker-compose run api php-cs-fixer --diff --fixers=-psr1,-psr2 fix app
 ```
 
 As a alternative, you can alias that command as **`psr2`** or other name:
 
 ```php
 # Bash and ZSH
-alias psr2="docker-compose run app php-cs-fixer --diff --fixers=-psr1,-psr2 fix"
+alias psr2="docker-compose run api php-cs-fixer --diff --fixers=-psr1,-psr2 fix"
 
 # Fish shell
-alias psr2 "docker-compose run app php-cs-fixer --diff --fixers=-psr1,-psr2 fix"
+alias psr2 "docker-compose run api php-cs-fixer --diff --fixers=-psr1,-psr2 fix"
 ```
 
 ### Unit Testing
@@ -122,4 +122,10 @@ Code coverage as HTML is already ignored on git when generated on the `coverage`
 
 ```php
 php vendor/bin/phpunit --coverage-html=coverage
+```
+
+Or to see coverage reports directly on the terminal
+
+```php
+php vendor/bin/phpunit --coverate-text
 ```
