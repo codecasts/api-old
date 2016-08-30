@@ -9,7 +9,8 @@
         "laravel/framework": "5.3.*",
         "codecasts/support": "^1.0",
         "league/fractal": "^0.13.0",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "laravel/passport": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
