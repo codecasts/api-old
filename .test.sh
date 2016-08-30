@@ -10,4 +10,4 @@ php artisan key:generate
 php vendor/bin/phpunit --colors=never --coverage-text
 
 # Send Coverage Reports
-bash <(curl -s https://codecov.io/bash) -f coverage.xml -B$TRAVIS_BRANCH -b$TRAVIS_BUILD_NUMBER -t$CODECOV_TOKEN
+bash <(curl -s https://codecov.io/bash) -f coverage.xml -C$TRAVIS_COMMIT -B$TRAVIS_BRANCH -b$TRAVIS_BUILD_NUMBER -t$CODECOV_TOKEN
