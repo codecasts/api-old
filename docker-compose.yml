@@ -19,7 +19,7 @@ services:
   # MySQL (5.7)
   mysql:
     image: ambientum/mysql:5.7
-    container_name: laravel-mysql
+    container_name: codecasts-mysql
     volumes:
       - codecasts-mysql-data:/var/lib/mysql
     ports:
@@ -56,7 +56,7 @@ services:
 # Laravel Queues
   queue:
     image: ambientum/php:7.0
-    container_name: laravel-queue
+    container_name: codecasts-queue
     command: php artisan queue:listen
     volumes:
       - .:/var/www/app
