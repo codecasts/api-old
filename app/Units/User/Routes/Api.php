@@ -1,6 +1,6 @@
 <?php
 
-namespace Codecasts\Units\Home\Routes;
+namespace Codecasts\Units\User\Routes;
 
 use Codecasts\Domains\Users\Repositories\UserRepository;
 use Codecasts\Support\Http\Routing\RouteFile;
@@ -19,13 +19,6 @@ class Api extends RouteFile
      */
     public function routes()
     {
-        $this->router->get('first_user', function() {
-            $repo = new UserRepository();
-            return $repo->findByID(1);
-        });
-
-        $this->router->get('/user', function (Request $request) {
-            return $request->user();
-        })->middleware('auth:api');
+        $this->router->get('/', 'UserController@user');//->middleware('auth:api');
     }
 }

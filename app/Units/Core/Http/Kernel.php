@@ -1,10 +1,10 @@
 <?php
 
-namespace Codecasts\Units;
+namespace Codecasts\Units\Core\Http;
 
-use Illuminate\Foundation\Http\Kernel;
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
-class HttpKernel extends Kernel
+class Kernel extends HttpKernel
 {
     /**
      * The application's global HTTP middleware stack.

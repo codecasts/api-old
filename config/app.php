@@ -168,6 +168,7 @@ return [
          */
         Migrator\MigrationServiceProvider::class,
         AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider::class,
+        Artesaos\Warehouse\WarehouseServiceProvider::class,
 
         /**
          * Support Service Providers...
@@ -193,7 +194,8 @@ return [
          */
         Codecasts\Units\Core\Providers\UnitServiceProvider::class,
         Codecasts\Units\Auth\Providers\UnitServiceProvider::class,
-        //Codecasts\Units\Home\Providers\UnitServiceProvider::class,
+        Codecasts\Units\Home\Providers\UnitServiceProvider::class,
+        Codecasts\Units\User\Providers\UnitServiceProvider::class,
 
     ],
 

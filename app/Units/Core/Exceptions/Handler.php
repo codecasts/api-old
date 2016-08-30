@@ -1,12 +1,12 @@
 <?php
 
-namespace Codecasts\Units;
+namespace Codecasts\Units\Core\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Foundation\Exceptions\Handler;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
-class ExceptionHandler extends Handler
+class Handler extends ExceptionHandler
 {
     /**
      * A list of the exception types that should not be reported.
@@ -62,25 +62,5 @@ class ExceptionHandler extends Handler
         }
 
         return redirect()->guest('login');
-    }
-
-    /**
-     * Prepare response containing exception render.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception $e
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    protected function prepareResponse($request, Exception $e)
-    {
-        if (!$request->expectsJson()) {
-            if ($this->isHttpException($e)) {
-                return $this->toIlluminateResponse($this->renderHttpException($e), $e);
-            } else {
-                return $this->toIlluminateResponse($this->convertExceptionToResponse($e), $e);
-            }
-        }
-
-        return ['status' => 'error', 'code' => $e->getCode(), 'message' => $e->getMessage()];
     }
 }

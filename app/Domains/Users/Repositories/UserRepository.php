@@ -4,7 +4,7 @@ namespace Codecasts\Domains\Users\Repositories;
 
 use Artesaos\Warehouse\AbstractCrudRepository;
 use Artesaos\Warehouse\Traits\ImplementsFractal;
-use Codecasts\Domains\Users\Presenters\UserPresenter;
+use Codecasts\Domains\Users\Transformers\UsersTransformer;
 use Codecasts\Domains\Users\User;
 
 use Codecasts\Domains\Users\Contracts\UserRepository as UserRepositoryContract;
@@ -15,7 +15,7 @@ class UserRepository extends AbstractCrudRepository implements UserRepositoryCon
 
     protected $modelClass = User::class;
 
-    protected $presenterClass = UserPresenter::class;
+    protected $transformerClass = UsersTransformer::class;
 
     public function getAdmins()
     {
