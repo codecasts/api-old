@@ -26,6 +26,9 @@ class Web extends RouteFile
 
         // Password Reset routes.
         $this->passwordResetRoutes();
+
+        // Register Social Routes
+        $this->registerSocialRoutes();
     }
 
     protected function authenticationRoutes()
@@ -48,5 +51,29 @@ class Web extends RouteFile
         $this->router->post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
         $this->router->get('password/reset/{token}', 'ResetPasswordController@showResetForm');
         $this->router->post('password/reset', 'ResetPasswordController@reset');
+    }
+
+    protected function registerSocialRoutes()
+    {
+        $this->router->get('login/{driver}', [
+            'as' => 'auth.social.login',
+            'uses' => 'SocialController@login'
+        ]);
+
+        $this->router->get('login', [
+            'as' => 'auth.login',
+            'uses' => 'SocialController@choose'
+        ]);
+
+        $this->router->post('callback/{driver}', [
+            'as' => 'auth.social.callback',
+            'uses' => 'SocialController@callback'
+        ]);
+
+        $this->router->get('logout', [
+            'as' => 'auth.logout',
+            'uses' => 'AuthController@logout'
+        ]);
+
     }
 }
