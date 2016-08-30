@@ -18,5 +18,9 @@ class Api extends RouteFile
      */
     public function routes()
     {
+        $this->router->post('callback/{driver}', [
+            'as' => 'auth.social.callback',
+            'uses' => 'SocialController@callback'
+        ]);
     }
 }

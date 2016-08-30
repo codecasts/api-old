@@ -186,13 +186,13 @@ return [
         /**
          * Domains
          */
-        //Codecasts\Domains\Users\Providers\DomainServiceProvider::class,
+        Codecasts\Domains\Users\Providers\DomainServiceProvider::class,
 
         /**
          * Units
          */
-        //Codecasts\Units\Core\Providers\UnitServiceProvider::class,
-        //Codecasts\Units\Auth\Providers\UnitServiceProvider::class,
+        Codecasts\Units\Core\Providers\UnitServiceProvider::class,
+        Codecasts\Units\Auth\Providers\UnitServiceProvider::class,
         //Codecasts\Units\Home\Providers\UnitServiceProvider::class,
 
     ],

@@ -35,8 +35,6 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->mapApiRoutes();
-
-        $this->mapConsoleRoutes();
     }
 
     /**
@@ -48,6 +46,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         (new Web([
             'middleware' => 'web',
+            'prefix' => 'auth',
             'namespace' => $this->namespace,
         ]))->register();
     }
@@ -62,19 +61,7 @@ class RouteServiceProvider extends ServiceProvider
         (new Api([
             'middleware' => 'api',
             'namespace' => $this->namespace,
-            'prefix' => 'api',
+            'prefix' => 'auth',
         ]))->register();
-    }
-
-    /**
-     * Define the "console" routes for the application.
-     *
-     * Those routes are the ones defined by
-     * artisan->command instead of registered directly
-     * on the ConsoleKernel.
-     */
-    protected function mapConsoleRoutes()
-    {
-        (new Console())->register();
     }
 }

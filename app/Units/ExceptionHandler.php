@@ -63,4 +63,24 @@ class ExceptionHandler extends Handler
 
         return redirect()->guest('login');
     }
+
+    /**
+     * Prepare response containing exception render.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception $e
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function prepareResponse($request, Exception $e)
+    {
+        if (!$request->expectsJson()) {
+            if ($this->isHttpException($e)) {
+                return $this->toIlluminateResponse($this->renderHttpException($e), $e);
+            } else {
+                return $this->toIlluminateResponse($this->convertExceptionToResponse($e), $e);
+            }
+        }
+
+        return ['status' => 'error', 'code' => $e->getCode(), 'message' => $e->getMessage()];
+    }
 }

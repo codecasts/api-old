@@ -3,14 +3,14 @@
 namespace Codecasts\Domains\Users;
 
 use Carbon\Carbon;
-use Codecasts\Domains\Suggestions\Suggestion;
+//use Codecasts\Domains\Suggestions\Suggestion;
 use Codecasts\Domains\Users\Contracts\SocialParser;
-use Codecasts\Support\Subscription\SubscriptionTrait;
+//use Codecasts\Support\Subscription\SubscriptionTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use SubscriptionTrait;
+    //use SubscriptionTrait;
     /**
      * The attributes that are mass assignable.
      *
@@ -64,6 +64,7 @@ class User extends Authenticatable
         return (bool) $this->admin;
     }
 
+    /**
     public function suggestions()
     {
         return $this->hasMany(Suggestion::class, 'user_id');
@@ -73,6 +74,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Suggestion::class, 'suggestions_votes', 'user_id', 'suggestion_id');
     }
+    */
 
     public static function usernameAvailable($username)
     {
