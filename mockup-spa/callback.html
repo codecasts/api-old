@@ -1,0 +1,51 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script>
+        function $_GET(name, url) {
+            if (!url) {
+                url = window.location.href;
+            }
+            name = name.replace(/[\[\]]/g, "\\$&");
+
+            const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+            const results = regex.exec(url);
+
+            if (!results) {
+                return null;
+            }
+            if (!results[2]) {
+                return '';
+            }
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+    </script>
+</head>
+<body>
+
+<div id="console" class="container"></div>
+
+<script>
+    const code = $_GET('code');
+    const url = 'http://api:8080/social/callback/github';
+    const data = {code: code};
+    const success = function (data, textStatus, jqXHR) {
+        $('#console').append($('<div class="alert alert-success">'
+                + JSON.stringify(data) + '</div>'));
+    };
+    const error = function (jqXHR, textStatus, errorThrown) {
+        $('#console').append($('<div class="alert alert-danger">'
+                + textStatus + '/' + errorThrown + '</div>'));
+    };
+
+    $.ajax({
+        method: 'POST',
+        url: url,
+        data: data,
+        success: success,
+        error: error
+    });
+</script>
+</body>
+</html>
