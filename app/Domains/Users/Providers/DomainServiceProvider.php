@@ -4,11 +4,6 @@ namespace Codecasts\Domains\Users\Providers;
 
 use Codecasts\Domains\Users\Database\Migrations\AlterGuestsOnUsersTable;
 use Codecasts\Domains\Users\Database\Migrations\CreateOauthIdentitiesTable;
-use Codecasts\Domains\Users\Database\Migrations\Passport\CreateOauthAccessTokensTable;
-use Codecasts\Domains\Users\Database\Migrations\Passport\CreateOauthAuthCodesTable;
-use Codecasts\Domains\Users\Database\Migrations\Passport\CreateOauthClientsTable;
-use Codecasts\Domains\Users\Database\Migrations\Passport\CreateOauthPersonalAccessClientsTable;
-use Codecasts\Domains\Users\Database\Migrations\Passport\CreateOauthRefreshTokensTable;
 use Codecasts\Support\Domain\ServiceProvider;
 use Codecasts\Domains\Users\Database\Factories\UserFactory;
 use Codecasts\Domains\Users\Database\Migrations\CreateUsersTable;
@@ -38,12 +33,6 @@ class DomainServiceProvider extends ServiceProvider
         CreateUsersTable::class,
         CreateOauthIdentitiesTable::class,
         AlterGuestsOnUsersTable::class,
-        // laravel passport migrations
-        CreateOauthAuthCodesTable::class,
-        CreateOauthAccessTokensTable::class,
-        CreateOauthRefreshTokensTable::class,
-        CreateOauthClientsTable::class,
-        CreateOauthPersonalAccessClientsTable::class,
     ];
 
     protected $seeders = [

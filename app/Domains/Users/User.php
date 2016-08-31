@@ -7,11 +7,12 @@ use Carbon\Carbon;
 use Codecasts\Domains\Users\Contracts\SocialParser;
 //use Codecasts\Support\Subscription\SubscriptionTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laravel\Passport\HasApiTokens;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens;
+
 
     //use SubscriptionTrait;
     /**
@@ -106,5 +107,17 @@ class User extends Authenticatable
         $dt = Carbon::createFromFormat('Y-m-d', $this->guest_until);
 
         return $dt->format('d/m/Y');
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->id;
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [
+            // none
+        ];
     }
 }

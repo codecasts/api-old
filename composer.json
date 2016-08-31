@@ -4,16 +4,18 @@
     "keywords": ["codecasts", "api", "learning", "ddd", "tdd", "domain"],
     "license": "MIT",
     "type": "project",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
         "codecasts/support": "^1.0",
         "league/fractal": "^0.13.0",
         "predis/predis": "^1.1",
-        "laravel/passport": "^1.0",
         "adamwathan/eloquent-oauth-l5": "^0.5.1",
         "elasticsearch/elasticsearch": "^2.2",
-        "maknz/slack": "^1.7"
+        "maknz/slack": "^1.7",
+        "tymon/jwt-auth": "^1.0.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
