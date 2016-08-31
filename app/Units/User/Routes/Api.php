@@ -19,6 +19,6 @@ class Api extends RouteFile
      */
     public function routes()
     {
-        $this->router->get('/', 'UserController@user');//->middleware('auth:api');
+        $this->router->get('/', 'UserController@user')->middleware('auth:api');
     }
 }

@@ -29,7 +29,7 @@
 <script>
     const code = $_GET('code');
     const url = 'http://api.codecasts.app/auth/callback/github';
-    const data = {code: code};
+    const data = {code: code, grant_type: 'session'};
     const success = function (data, textStatus, jqXHR) {
         $('#console').append($('<div class="alert alert-success">'
                 + JSON.stringify(data) + '</div>'));

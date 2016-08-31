@@ -5,6 +5,7 @@ namespace Codecasts\Units\User\Http\Controllers;
 use Codecasts\Domains\Users\Contracts\UserRepository;
 use Codecasts\Domains\Users\Transformers\UsersTransformer;
 use Codecasts\Units\Core\Http\Controller;
+use Illuminate\Contracts\Auth\Guard;
 
 
 /**
@@ -19,12 +20,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function user(UserRepository $repository)
+    public function user(Guard $auth)
     {
-        //return $this->response()->noContent();
-        $users = $repository->getAll();
-
-        return $this->response()->collection($users);
+        return $auth->user();
 
         //return $this->makeResponseCollection($users);
     }
