@@ -9,3 +9,7 @@ Homestead.json
 Homestead.yaml
 .env
 composer.lock
+
+# passport keys
+storage/oauth-private.key
+storage/oauth-public.key

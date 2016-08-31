@@ -169,6 +169,7 @@ return [
         Migrator\MigrationServiceProvider::class,
         AdamWathan\EloquentOAuthL5\EloquentOAuthServiceProvider::class,
         Artesaos\Warehouse\WarehouseServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
 
         /**
          * Support Service Providers...
